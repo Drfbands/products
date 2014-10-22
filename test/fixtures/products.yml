@@ -11,3 +11,11 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+
+band:
+ title:  Average band
+ description: 
+  The 41 inch long, 4.5 mm thick, 1 and 3/4 inch wide. When the Average Resistance band is stretched from the floor to the 6 foot level (72 inches), the average resistance band will give you 75 pounds of resistance. This band is great for: Strengthening ankles Mobility work Running Squating Heavy leg exercises *Contains Latex
+ price: 27.99
+ image_url: greenband.jpg
+ 
