@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ProductTest < ActiveSupport::TestCase
 	fixtures :products
+
 test "product attributes must not be empty" do 
 	product = Product.new
 	assert product.invalid? 
@@ -10,10 +11,12 @@ test "product attributes must not be empty" do
 	assert product.errors[:price].any?
 	assert product.errors[:image_url].any?
 end 
-end
 
-test "product price must be positive" do
-	product = Product.new(title: "My band title", 
+
+
+
+test "product price must be positive" do 
+    product = Product.new(title:    "My Band Title", 
 		                  description: "yyy",
 		                  image_url: "zzz.jpg")
 	product.price = -1
@@ -27,13 +30,13 @@ test "product price must be positive" do
 	  product.errors[:price]
 
 	product.price = 1
-	assert product.invalid?
+	assert product.valid?
 end
 
 def new_product(image_url)
 	Product.new(title: "My band title",
 				description: "yyy",
-				price: 1,
+				price:        1,
 				image_url: image_url)
 end
 
@@ -42,7 +45,7 @@ test "image url" do
 			 http://a.b.c/x/y/z/fred.gif}
 	bad = %w{ fred.doc fred.gif/more fred.gif.more }
 	ok.each do |name| 
-		assert new_product (name).valid?, "#{name} should be valid"
+		assert new_product(name).valid?, "#{name} should be valid"
 end 
 
 bad.each do |name|
@@ -51,7 +54,7 @@ bad.each do |name|
 end 
 
 test "product is not valid without a unique title" do
-	product = Product.new(title: products(:band).title, 
+	product = Product.new(title: products(:Band).title, 
 						  description: "yyy",
 						  price: 1,
 						  image_url: "fred.gif")
@@ -59,3 +62,6 @@ test "product is not valid without a unique title" do
 	assert product.invalid?
 	assert_equal ["has already been taken"], product.errors[:title]
 end 
+	# assert true
+	#end
+end
